@@ -1,11 +1,11 @@
-FROM golang:latest as builder
+FROM golang:latest AS builder
 WORKDIR /app
-COPY ./server/stream/ ./go_server
-RUN cd go_server && go mod tidy && go mod download
-RUN go build -ldflags='-s -w' ./go_server -o stream 
+COPY ./stream/ .
+RUN go mod download && go mod tidy 
+RUN go build -ldflags='-s -w' stream
 
-FROM node:latest 
+FROM node:latest AS server
 WORKDIR /app
 COPY . . 
 COPY --from=builder /app/stream /app/server/stream/stream
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
