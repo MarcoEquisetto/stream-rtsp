@@ -10,4 +10,6 @@ WORKDIR /app
 COPY . . 
 COPY --from=builder /app/stream /app/stream/stream
 RUN npm install
+EXPOSE 8000
+
 CMD ["npm", "run", "start"]
