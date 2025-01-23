@@ -8,4 +8,5 @@ FROM node:latest AS server
 WORKDIR /app
 COPY . . 
 COPY --from=builder /app/stream /app/server/stream/stream
+RUN npm install
 CMD ["npm", "run", "start"]
