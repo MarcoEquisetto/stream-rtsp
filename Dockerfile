@@ -12,4 +12,6 @@ COPY --from=builder /app/stream /app/stream/stream
 RUN npm install
 EXPOSE 8000
 EXPOSE 8001
+EXPOSE 8002
+
 CMD ["npm", "run", "start"]
