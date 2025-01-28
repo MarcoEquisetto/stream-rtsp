@@ -26,9 +26,13 @@ func serveHTTP() {
 	}
 }
 
-//HTTPAPIServerStreamCodec stream codec
+// HTTPAPIServerStreamCodec stream codec
 func HTTPAPIServerStreamCodec(c *gin.Context) {
 	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+	c.Header("Access-Control-Allow-Credentials", "true")
+
 	if Config.ext(c.Param("uuid")) {
 		Config.RunIFNotRun(c.Param("uuid"))
 		codecs := Config.coGe(c.Param("uuid"))
@@ -58,9 +62,13 @@ func HTTPAPIServerStreamCodec(c *gin.Context) {
 	}
 }
 
-//HTTPAPIServerStreamWebRTC stream video over WebRTC
+// HTTPAPIServerStreamWebRTC stream video over WebRTC
 func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+	c.Header("Access-Control-Allow-Credentials", "true")
+
 	if !Config.ext(c.PostForm("suuid")) {
 		log.Println("stream not found")
 		return
