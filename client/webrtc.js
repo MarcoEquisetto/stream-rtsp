@@ -79,4 +79,11 @@ async function webRTC(streamName = null, elementName = null) {
   };
 }
 
-window.onload = () => webRTC('reowhite', 'videoElem');
+// Function to extract the 'stream' parameter from the URL
+function getStreamFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('stream');
+}
+
+
+window.onload = () => webRTC(getStreamFromURL(), 'videoElem');

@@ -14,11 +14,17 @@
       "VOD": false,
       "disableAudio": true,
       "debug": false,
-      "url": "rtsp://192.168.1.44:554/ch01/1"
+      "url": "rtsp://192.168.1.61:554/ch01/1"
+    },
+    "cam2": {
+      "VOD": false,
+      "disableAudio": true,
+      "debug": false,
+      "url": "rtsp://192.168.1.58:554/rtsp/streaming?channel=01&subtype=1"
     }
   },
   "client": {
     "debug": true,
-    "defaultStream": "reowhite"
+    "defaultStream": "cam2"
   }
 }
